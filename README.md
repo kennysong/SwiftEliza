@@ -4,7 +4,7 @@ SwiftEliza is a Swift + iOS implementation of Weizenbaum's [ELIZA chatbot](https
 
 Based on my [Go implementation](https://github.com/kennysong/goeliza) and QuestionBot from Apple's [App Development with Swift](https://itunes.apple.com/book/app-development-with-swift/id1118575552) book.
 
-<img src="/SwiftEliza/screenshot.png" width="350px">
+![SwiftEliza screenshot](/SwiftEliza/screenshot.png)
 
 # Notes
 
