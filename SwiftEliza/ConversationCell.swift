@@ -8,8 +8,8 @@ private var dateFormatter: DateFormatter = {
     return formatter
 }()
 
-/// Used to display a message in the conversation. There are two layouts of this cell, specified in the storyboard,
-/// but the components are the same.
+// Used to display a message in the conversation. There are two layouts of this cell, specified in the storyboard,
+// but the components are the same.
 class ConversationCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!

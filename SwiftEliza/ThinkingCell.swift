@@ -1,6 +1,6 @@
 import UIKit
 
-/// Used to indicate that the bot is "thinking". It contains a single image view which can be animated.
+// Used to indicate that the bot is "thinking". It contains a single image view which can be animated.
 class ThinkingCell: UITableViewCell {
 
     @IBOutlet weak var thinkingImage: UIImageView!

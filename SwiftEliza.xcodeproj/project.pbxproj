@@ -17,7 +17,7 @@
 		795D42181D3F7BD500B879D9 /* AskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42111D3F7BD500B879D9 /* AskCell.swift */; };
 		795D42191D3F7BD500B879D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42121D3F7BD500B879D9 /* AppDelegate.swift */; };
 		795D421B1D3F7C0100B879D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795D421A1D3F7C0100B879D9 /* Assets.xcassets */; };
-		795D42231D3F7CC000B879D9 /* ConversationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42221D3F7CC000B879D9 /* ConversationDataSource.swift */; };
+		795D42231D3F7CC000B879D9 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42221D3F7CC000B879D9 /* Conversation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		795D42111D3F7BD500B879D9 /* AskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskCell.swift; path = SwiftEliza/AskCell.swift; sourceTree = SOURCE_ROOT; };
 		795D42121D3F7BD500B879D9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SwiftEliza/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		795D421A1D3F7C0100B879D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SwiftEliza/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		795D42221D3F7CC000B879D9 /* ConversationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationDataSource.swift; path = SwiftEliza/ConversationDataSource.swift; sourceTree = SOURCE_ROOT; };
+		795D42221D3F7CC000B879D9 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = SwiftEliza/Conversation.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				795D42101D3F7BD500B879D9 /* Message.swift */,
-				795D42221D3F7CC000B879D9 /* ConversationDataSource.swift */,
+				795D42221D3F7CC000B879D9 /* Conversation.swift */,
 				7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */,
 			);
 			name = Model;
@@ -142,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					4C70A30E1CC4517D00D64014 = {
@@ -193,7 +193,7 @@
 				795D42131D3F7BD500B879D9 /* ConversationViewController.swift in Sources */,
 				795D42141D3F7BD500B879D9 /* ThinkingCell.swift in Sources */,
 				795D42191D3F7BD500B879D9 /* AppDelegate.swift in Sources */,
-				795D42231D3F7CC000B879D9 /* ConversationDataSource.swift in Sources */,
+				795D42231D3F7CC000B879D9 /* Conversation.swift in Sources */,
 				795D42171D3F7BD500B879D9 /* Message.swift in Sources */,
 				795D42151D3F7BD500B879D9 /* ConversationCell.swift in Sources */,
 			);
@@ -235,8 +235,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -281,8 +283,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

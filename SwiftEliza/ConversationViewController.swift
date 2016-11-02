@@ -1,31 +1,21 @@
 import UIKit
 
-/// Manages the user interaction and table view display.
+// Manages the user interaction and table view display.
 class ConversationViewController: UITableViewController {
-
     let eliza = Eliza()
-    let conversationSource = ConversationDataSource()
+    let conversation = Conversation()
 
     private let thinkingTime: TimeInterval = 2
     fileprivate var isThinking = false
     
-    /// Called when the user enters a question.
+    // Called when the user enters a question.
     fileprivate func respondToQuestion(_ questionText: String) {
         // A question can't be asked while the app is thinking.
         isThinking = true
         
-        // This check is present because the message count has to change if we are adding cells to the table,
-        // otherwise the app crashes
-        let countBefore = conversationSource.messageCount
-        conversationSource.add(question: questionText)
-        let count = conversationSource.messageCount
-        
-        // Will hold the index path of the question cell just added, if the conversation data source has responded to the addition
-        var questionPath: IndexPath?
-        if count != countBefore {
-            // This creates an index path for a new cell at the end of the conversation
-            questionPath = IndexPath(row: count - 1, section: ConversationSection.history.rawValue)
-        }
+        // Add a question and create an index path for a new cell at the end of the conversation
+        conversation.add(question: questionText)
+        let questionPath = IndexPath(row: conversation.messages.count - 1, section: ConversationSection.history.rawValue)
         
         // Inserts a row for the thinking cell, and for the newly added question (if that exists)
         tableView.insertRows(at: [questionPath, ConversationSection.thinkingPath].flatMap { $0 }, with: .bottom)
@@ -38,15 +28,11 @@ class ConversationViewController: UITableViewController {
             // Get an answer from the question answerer
             let answer = self.eliza.replyTo(questionText)
             // As before, check that adding an answer actually increases the message count
-            let countBefore = self.conversationSource.messageCount
-            self.conversationSource.add(answer: answer)
-            let count = self.conversationSource.messageCount
+            self.conversation.add(answer: answer)
             // Several updates are happening to the table so they are grouped inside begin / end updates calls
             self.tableView.beginUpdates()
             // Add the answer cell, if applicable
-            if count != countBefore {
-                self.tableView.insertRows(at: [IndexPath(row:count - 1, section: ConversationSection.history.rawValue)], with: .fade)
-            }
+            self.tableView.insertRows(at: [IndexPath(row:self.conversation.messages.count - 1, section: ConversationSection.history.rawValue)], with: .fade)
             // Delete the thinking cell
             self.tableView.deleteRows(at: [ConversationSection.thinkingPath], with: .fade)
             self.tableView.endUpdates()
@@ -56,10 +42,8 @@ class ConversationViewController: UITableViewController {
     }
 }
 
-/// The text field's delegate is called when interesting things happen to the text field 
-/// (this is the area the user types their questions in to)
+// The text field's delegate is called when interesting things happen to the text field 
 extension ConversationViewController: UITextFieldDelegate {
-
     // Called when the user taps the return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Don't do anything if there is no text
@@ -67,14 +51,13 @@ extension ConversationViewController: UITextFieldDelegate {
             return false
         }
         
-        // Don't do anything if the app is thinking
-        if isThinking {
+        // Don't do anything if the app is thinking or text is whitespace only
+        if isThinking || text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return false
         }
         
-        // Clear out the text
-        textField.text = nil
         // Deal with the question
+        textField.text = nil
         respondToQuestion(text)
         return false
     }
@@ -83,15 +66,11 @@ extension ConversationViewController: UITextFieldDelegate {
 // MARK: Table view data source
 // This is like the conversation data source, but it has more details to deal with
 extension ConversationViewController {
-    
     // Used to define each section of the table
     fileprivate enum ConversationSection: Int {
-        // Where the conversation goes
-        case history = 0
-        // Where the thinking indicator goes
-        case thinking = 1
-        // Where the ask box goes
-        case ask = 2
+        case history = 0  // Where the conversation goes
+        case thinking = 1  // Where the thinking indicator goes
+        case ask = 2  // Where the ask box goes
         
         static var sectionCount: Int {
             return self.ask.rawValue + 1
@@ -119,8 +98,8 @@ extension ConversationViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch ConversationSection(rawValue: section)! {
         case .history:
-            // This is one of the questions the conversation data source is asked.
-            return conversationSource.messageCount
+            // This is one of the questions the conversation data source is asked
+            return conversation.messages.count
         case .thinking:
             // No cells if the app is not thinking, one cell if it is
             return isThinking ? 1 : 0
@@ -135,13 +114,13 @@ extension ConversationViewController {
         switch ConversationSection(rawValue: indexPath.section)! {
         case .history:
             // Ask the conversation data source for the correct message
-            let message = conversationSource.messageAt(index: indexPath.row)
+            let message = conversation.messages[indexPath.row]
             
             // Get the right identifier depending on the message type
             let identifier: String
             switch message.type {
-            case .question: identifier = "Question"
-            case .answer: identifier = "Answer"
+                case .question: identifier = "Question"
+                case .answer: identifier = "Answer"
             }
             // Get a cell of the correct design from the storyboard
             let cell: ConversationCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ConversationCell
