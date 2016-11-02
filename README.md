@@ -12,4 +12,4 @@ To run, just open the `SwiftEliza.xcodeproj` in XCode.
 
 The functionality of ELIZA is contained in the `Eliza.swift` file, and the rest are boilerplate for the iOS app.
 
-Written in Swift 3 and for iOS 10 and above. 
+Written in Swift 3 for iOS 10 and above. 
