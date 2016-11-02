@@ -3,7 +3,7 @@ import UIKit
 /// Manages the user interaction and table view display.
 class ConversationViewController: UITableViewController {
 
-    let questionAnswerer = QuestionAnswerer()
+    let eliza = Eliza()
     let conversationSource = ConversationDataSource()
 
     private let thinkingTime: TimeInterval = 2
@@ -13,26 +13,30 @@ class ConversationViewController: UITableViewController {
     fileprivate func respondToQuestion(_ questionText: String) {
         // A question can't be asked while the app is thinking.
         isThinking = true
+        
         // This check is present because the message count has to change if we are adding cells to the table,
         // otherwise the app crashes
         let countBefore = conversationSource.messageCount
         conversationSource.add(question: questionText)
         let count = conversationSource.messageCount
+        
         // Will hold the index path of the question cell just added, if the conversation data source has responded to the addition
         var questionPath: IndexPath?
         if count != countBefore {
             // This creates an index path for a new cell at the end of the conversation
             questionPath = IndexPath(row: count - 1, section: ConversationSection.history.rawValue)
         }
+        
         // Inserts a row for the thinking cell, and for the newly added question (if that exists)
         tableView.insertRows(at: [questionPath, ConversationSection.thinkingPath].flatMap { $0 }, with: .bottom)
         tableView.scrollToRow(at: ConversationSection.askPath, at: .bottom, animated: true)
+        
         // Waits for the thinking time to elapse before adding the answer
         DispatchQueue.main.asyncAfter(deadline: .now() + thinkingTime) {
             // It's now OK to ask another question
             self.isThinking = false
             // Get an answer from the question answerer
-            let answer = self.questionAnswerer.responseTo(question:  questionText)
+            let answer = self.eliza.replyTo(questionText)
             // As before, check that adding an answer actually increases the message count
             let countBefore = self.conversationSource.messageCount
             self.conversationSource.add(answer: answer)

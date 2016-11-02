@@ -14,4 +14,4 @@ struct Message {
 }
 
 /// The welcoming text to display to open the conversation
-let openingLine = Message(date: Date(), text: "Hello, I'm ChatBot.\nPlease ask me a question", type: .answer)
+let openingLine = Message(date: Date(), text: "Hello, my name is Eliza.\nWe can talk about anything you'd like.", type: .answer)

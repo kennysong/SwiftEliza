@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7041FAA71DCA0EA8002FA5E4 /* Eliza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */; };
 		7911E9201D40FED400DB0464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7911E91C1D40FED400DB0464 /* Main.storyboard */; };
 		7911E9211D40FED400DB0464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7911E91E1D40FED400DB0464 /* LaunchScreen.storyboard */; };
 		795D42131D3F7BD500B879D9 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D420C1D3F7BD500B879D9 /* ConversationViewController.swift */; };
 		795D42141D3F7BD500B879D9 /* ThinkingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D420D1D3F7BD500B879D9 /* ThinkingCell.swift */; };
 		795D42151D3F7BD500B879D9 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D420E1D3F7BD500B879D9 /* ConversationCell.swift */; };
-		795D42161D3F7BD500B879D9 /* QuestionAnswerer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D420F1D3F7BD500B879D9 /* QuestionAnswerer.swift */; };
 		795D42171D3F7BD500B879D9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42101D3F7BD500B879D9 /* Message.swift */; };
 		795D42181D3F7BD500B879D9 /* AskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42111D3F7BD500B879D9 /* AskCell.swift */; };
 		795D42191D3F7BD500B879D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795D42121D3F7BD500B879D9 /* AppDelegate.swift */; };
@@ -23,12 +23,12 @@
 /* Begin PBXFileReference section */
 		4C70A30F1CC4517D00D64014 /* SwiftEliza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftEliza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C70A31E1CC4517D00D64014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = SwiftEliza/Info.plist; sourceTree = "<group>"; };
+		7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Eliza.swift; path = SwiftEliza/Eliza.swift; sourceTree = SOURCE_ROOT; };
 		7911E91D1D40FED400DB0464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SwiftEliza/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		7911E91F1D40FED400DB0464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SwiftEliza/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		795D420C1D3F7BD500B879D9 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationViewController.swift; path = SwiftEliza/ConversationViewController.swift; sourceTree = SOURCE_ROOT; };
 		795D420D1D3F7BD500B879D9 /* ThinkingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThinkingCell.swift; path = SwiftEliza/ThinkingCell.swift; sourceTree = SOURCE_ROOT; };
 		795D420E1D3F7BD500B879D9 /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationCell.swift; path = SwiftEliza/ConversationCell.swift; sourceTree = SOURCE_ROOT; };
-		795D420F1D3F7BD500B879D9 /* QuestionAnswerer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionAnswerer.swift; path = SwiftEliza/QuestionAnswerer.swift; sourceTree = SOURCE_ROOT; };
 		795D42101D3F7BD500B879D9 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = SwiftEliza/Message.swift; sourceTree = SOURCE_ROOT; };
 		795D42111D3F7BD500B879D9 /* AskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskCell.swift; path = SwiftEliza/AskCell.swift; sourceTree = SOURCE_ROOT; };
 		795D42121D3F7BD500B879D9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SwiftEliza/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -101,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				795D42101D3F7BD500B879D9 /* Message.swift */,
-				795D420F1D3F7BD500B879D9 /* QuestionAnswerer.swift */,
 				795D42221D3F7CC000B879D9 /* ConversationDataSource.swift */,
+				7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -188,8 +188,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				795D42161D3F7BD500B879D9 /* QuestionAnswerer.swift in Sources */,
 				795D42181D3F7BD500B879D9 /* AskCell.swift in Sources */,
+				7041FAA71DCA0EA8002FA5E4 /* Eliza.swift in Sources */,
 				795D42131D3F7BD500B879D9 /* ConversationViewController.swift in Sources */,
 				795D42141D3F7BD500B879D9 /* ThinkingCell.swift in Sources */,
 				795D42191D3F7BD500B879D9 /* AppDelegate.swift in Sources */,
