@@ -6,8 +6,10 @@ Based on my [Go implementation](https://github.com/kennysong/goeliza) and Questi
 
 # Notes
 
-To run, clone this repo and open the `SwiftEliza.xcodeproj` in XCode. 
 
-The functionality of ELIZA is contained in the `Eliza.swift` file, and the others are mostly boilerplate for the iOS app to run.
 
-This was written in Swift 3 and for iOS 10 and above. 
+To run, just open the `SwiftEliza.xcodeproj` in XCode. 
+
+The functionality of ELIZA is contained in the `Eliza.swift` file, and the rest are boilerplate for the iOS app.
+
+Written in Swift 3 and for iOS 10 and above. 
