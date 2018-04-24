@@ -34,7 +34,7 @@ let eliza = Therapist()
 print(eliza.eliza.elizaHi())
 
 repeat {
-  let cstr = gets(&buf)!
+  let cstr = fgets(&buf, 500, stdin)!
   let s = String(cString: cstr)
   
   eliza.ask(s) { answer in

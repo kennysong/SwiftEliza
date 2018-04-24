@@ -308,7 +308,7 @@ public struct Eliza {
         for (pattern, responses) in psychobabble {
             // Apply the regex re to the statement string
             let re = try! NSRegularExpression(pattern: pattern)
-          #if swift(>=4.0)
+          #if swift(>=3.2)
             let matches = re.matches(in: statement,
                                      range: NSRange(location: 0, length: statement.count))
             
@@ -327,7 +327,9 @@ public struct Eliza {
                 // part of the response, for added realism.
                 var fragment = ""
                 if match.numberOfRanges > 1 {
-                  #if swift(>=4.0)
+                  #if os(Linux)                  
+                    fragment = NSString(string: statement).substring(with: match.range(at: 1))
+                  #elseif swift(>=4.0)
                     fragment = (statement as NSString).substring(with: match.range(at: 1))
                   #else
                     fragment = (statement as NSString).substring(with: match.rangeAt(1))
@@ -366,10 +368,21 @@ public struct Eliza {
     }
 }
 
+#if os(Linux)
+    import SwiftGlibc
+#endif
+
 // Add a randChoice method to Array's, which returns a random element.
 extension Array {
     func randChoice() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
+        #if os(Linux)
+            func arc4random_uniform(_ max: UInt32) -> Int32 {
+                return (SwiftGlibc.rand() % Int32(max-1))
+            }
+            let index = Int(arc4random_uniform(UInt32(self.count)))
+        #else
+            let index = Int(arc4random_uniform(UInt32(self.count)))
+        #endif
         return self[index]
     }
 }
