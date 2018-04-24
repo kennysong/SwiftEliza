@@ -1,5 +1,12 @@
 # SwiftEliza
 
+![Swift3](https://img.shields.io/badge/swift-3-blue.svg)
+![Swift4](https://img.shields.io/badge/swift-4-blue.svg)
+![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![iOS](https://img.shields.io/badge/os-iOS-green.svg?style=flat)
+![tuxOS](https://img.shields.io/badge/os-tuxOS-green.svg?style=flat)
+![Travis](https://api.travis-ci.org/AlwaysRightInstitute/SwiftEliza.svg?branch=feature/swift-package-manager&style=flat)
+
 SwiftEliza is a Swift + iOS implementation of Weizenbaum's [ELIZA chatbot](https://en.wikipedia.org/wiki/ELIZA), which is a simulation of a Rogerian psychotherapist. 
 
 Based on my [Go implementation](https://github.com/kennysong/goeliza) and QuestionBot from Apple's [App Development with Swift](https://itunes.apple.com/book/app-development-with-swift/id1118575552) book.
