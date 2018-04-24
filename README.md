@@ -59,7 +59,7 @@ Example:
 let eliza = Eliza()
 print(eliza.elizaHi())
 print(eliza.replyTo("Hi Eliza, I'm feeling super-bad today!"))
-print(eliza.elizaBuy())
+print(eliza.elizaBye())
 ```
 
 It is recommended that you add proper delays when responding to interactive
