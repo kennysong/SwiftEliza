@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		4C70A30F1CC4517D00D64014 /* SwiftEliza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftEliza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C70A31E1CC4517D00D64014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = SwiftEliza/Info.plist; sourceTree = "<group>"; };
-		7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Eliza.swift; path = SwiftEliza/Eliza.swift; sourceTree = SOURCE_ROOT; };
+		7041FAA61DCA0EA8002FA5E4 /* Eliza.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Eliza.swift; path = Sources/Eliza/Eliza.swift; sourceTree = SOURCE_ROOT; };
 		7911E91D1D40FED400DB0464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SwiftEliza/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		7911E91F1D40FED400DB0464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SwiftEliza/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		795D420C1D3F7BD500B879D9 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationViewController.swift; path = SwiftEliza/ConversationViewController.swift; sourceTree = SOURCE_ROOT; };
