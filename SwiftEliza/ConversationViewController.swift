@@ -16,9 +16,15 @@ class ConversationViewController: UITableViewController {
         // Add a question and create an index path for a new cell at the end of the conversation
         conversation.add(question: questionText)
         let questionPath = IndexPath(row: conversation.messages.count - 1, section: ConversationSection.history.rawValue)
-        
+      
         // Inserts a row for the thinking cell, and for the newly added question (if that exists)
-        tableView.insertRows(at: [questionPath, ConversationSection.thinkingPath].flatMap { $0 }, with: .bottom)
+        #if swift(>=4.2)
+            tableView.insertRows(at: [questionPath, ConversationSection.thinkingPath]
+                                     .compactMap { $0 }, with: .bottom)
+        #else
+            tableView.insertRows(at: [questionPath, ConversationSection.thinkingPath]
+                                     .flatMap { $0 }, with: .bottom)
+        #endif
         tableView.scrollToRow(at: ConversationSection.askPath, at: .bottom, animated: true)
         
         // Waits for the thinking time to elapse before adding the answer
@@ -152,6 +158,10 @@ extension ConversationViewController {
     }
     // This tells the table to make the row the correct height based on the contents
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      #if swift(>=4.2)
+        return UITableView.automaticDimension
+      #else
         return UITableViewAutomaticDimension
+      #endif
     }
 }

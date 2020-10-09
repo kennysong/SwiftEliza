@@ -1,6 +1,9 @@
 import Foundation
 
-struct Eliza {
+public struct Eliza {
+  
+    public init() {}
+  
     // A list of introduction sentences for ELIZA.
     private let introductions = [
         "Hello. How are you feeling today?",
@@ -281,19 +284,19 @@ struct Eliza {
     ]
     
     // elizaHi will return a random greeting from Eliza.
-    func elizaHi() -> String {
+    public func elizaHi() -> String {
         return introductions.randChoice()
     }
     
     // elizaBye will return a random goodbye from Eliza.
-    func elizaBye() -> String {
+    public func elizaBye() -> String {
         return goodbyes.randChoice()
     }
     
     // replyTo will construct a reply for a given statement using Eliza's rules.
-    func replyTo(_ statement: String) -> String {
+    public func replyTo(_ statement: String) -> String {
         // First, preprocess the statement for more effective matching
-        var statement = preprocess(statement)
+        let statement = preprocess(statement)
         
         // Then, we check if this is a quit statement
         if quitStatements.contains(statement)  {
@@ -305,8 +308,15 @@ struct Eliza {
         for (pattern, responses) in psychobabble {
             // Apply the regex re to the statement string
             let re = try! NSRegularExpression(pattern: pattern)
-            let matches = re.matches(in: statement, range: NSRange(location: 0, length: statement.characters.count))
+          #if swift(>=3.2)
+            let matches = re.matches(in: statement,
+                                     range: NSRange(location: 0, length: statement.count))
             
+          #else
+            let matches = re.matches(in: statement,
+                                     range: NSRange(location: 0, length: statement.characters.count))
+          #endif
+          
             // If the statement matched any recognizable statements
             if matches.count > 0 {
                 // There should only be one match
@@ -317,7 +327,13 @@ struct Eliza {
                 // part of the response, for added realism.
                 var fragment = ""
                 if match.numberOfRanges > 1 {
+                  #if os(Linux)                  
+                    fragment = NSString(string: statement).substring(with: match.range(at: 1))
+                  #elseif swift(>=4.0)
+                    fragment = (statement as NSString).substring(with: match.range(at: 1))
+                  #else
                     fragment = (statement as NSString).substring(with: match.rangeAt(1))
+                  #endif
                     fragment = reflect(fragment)
                 }
                 
@@ -352,10 +368,21 @@ struct Eliza {
     }
 }
 
+#if os(Linux)
+    import SwiftGlibc
+#endif
+
 // Add a randChoice method to Array's, which returns a random element.
 extension Array {
     func randChoice() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
+        #if os(Linux)
+            func arc4random_uniform(_ max: UInt32) -> Int32 {
+                return (SwiftGlibc.rand() % Int32(max-1))
+            }
+            let index = Int(arc4random_uniform(UInt32(self.count)))
+        #else
+            let index = Int(arc4random_uniform(UInt32(self.count)))
+        #endif
         return self[index]
     }
 }
